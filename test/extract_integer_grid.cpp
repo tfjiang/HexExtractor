@@ -3,7 +3,8 @@
 #include <vector>
 #include <algorithm>
 
-#include <zjucad/ptree/include/ptree.h>
+//#include <zjucad/ptree/include/ptree.h>
+#include <zjucad/ptree/ptree.h>
 #include <zjucad/matrix/matrix.h>
 
 #include "../src/hex_extractor.h"

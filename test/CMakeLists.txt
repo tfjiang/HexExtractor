@@ -1,5 +1,11 @@
-include_directories("~/usr/lib")
+file(GLOB header *.h)
+file(GLOB source *.cpp)
 
-link_directories("/usr/lib/")
+include_directories($ENV{HOME}/usr/include)
+link_directories($ENV{HOME}/usr/Linux/64/gcc4/lib)
 
-add_executable(extract_integer_grid extract_integer_grid.cpp)
+add_executable(extract_integer_grid ${source} ${header})
+target_link_libraries(extract_integer_grid
+lapack
+zjucad-ptree
+)

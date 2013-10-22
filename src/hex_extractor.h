@@ -5,7 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
-
+#include <hjlib/math/blas_lapack.h>
 #include <zjucad/matrix/matrix.h>
 #include <zjucad/matrix/lapack.h>
 
@@ -89,8 +89,11 @@ bool contains(int x, int y, int z, int id, matrixd *node, matrixst *tet)
 	p(0, 0) = x; p(1, 0) = y; p(2, 0) = z;
 	for (int i = 0; i < 4; i++)
 		M(colon(), i) = (*node)(colon(), (*tet)(i, id));
-
-	a = inv(trans(M) * M) * tran(M) * p;
+	matrixd MTM_inv = trans(M) * M;
+	if(inv(MTM_inv)){
+			cerr << "# [error] inv fail." << endl;
+	}
+	a = MTM_inv * trans(M) * p;
 	for (int i = 0; i < 4; i++)
 		if ( a(i, 0) < 0 )
 			return false;
@@ -117,7 +120,7 @@ void integer_grid_in_tet(int id, matrixd *node, matrixst *tet, Imatrix &int_poin
 
 void generate_all_integer_grid(matrixd *node, matrixst *tet, Imatrix &int_point)
 {
-	for (int id = 0; id < (*tet).; id++)
+		for (int id = 0; id < (*tet).size(2); id++)
 		integer_grid_in_tet(id, node, tet, int_point);
 }
 
@@ -125,7 +128,7 @@ void print(const char *outfile, Imatrix &int_point)
 {
 	ofstream out(outfile);
 	for (int i = 0; i < int_point.size(); i++) {
-		for (int j = 0; j < int_point[i].size; j++)
+			for (int j = 0; j < int_point[i].size(); j++)
 			out << "(" << 
 				int_point[i][j].x << "," << 
 				int_point[i][j].y << "," <<

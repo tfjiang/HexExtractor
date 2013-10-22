@@ -1,7 +1,9 @@
 #include <fstream>
-#include <../zjucad/matrix/matrix.h>
-#include <../jtflib/mesh/include/io.h>
-#include "../vtk.h"
+//#include <../zjucad/matrix/matrix.h>
+//#include <../jtflib/mesh/include/io.h>
+#include <zjucad/matrix/matrix.h>
+#include <jtflib/mesh/io.h>
+#include "../src/vtk.h"
 
 using namespace std;
 using namespace jtf::mesh;
@@ -44,19 +46,19 @@ int tet_mesh_read_from_txt(const char* path, matrixd* node, matrixst* tet)
 
 }
 
-int main()
-{
-	matrixd node;
-	matrixst tet;
-	matrixst tri;
+// int main()
+// {
+// 	matrixd node;
+// 	matrixst tet;
+// 	matrixst tri;
 
-	tet_mesh_read_from_txt("../fandisk_4k_polycube_after_split.tet.txt", &node, &tet);
-//	tet_mesh_read_from_zjumat("../fandisk_4k_polycube_after_split.tet.txt", &node, &tet, &tri);
+// 	tet_mesh_read_from_txt("../fandisk_4k_polycube_after_split.tet.txt", &node, &tet);
+// //	tet_mesh_read_from_zjumat("../fandisk_4k_polycube_after_split.tet.txt", &node, &tet, &tri);
 
-	ofstream ofs("../tet_mesh.vtk");
+// 	ofstream ofs("../tet_mesh.vtk");
 	
-	tet2vtk(ofs, &node[0], node.size(2), &tet[0], tet.size(2));
+// 	tet2vtk(ofs, &node[0], node.size(2), &tet[0], tet.size(2));
 
-	return 0;
+// 	return 0;
 
-}
+// }
