@@ -7,7 +7,7 @@
 #include <zjucad/ptree/ptree.h>
 #include <zjucad/matrix/matrix.h>
 
-#include "../src/hex_extractor.h"
+#include "../extractor/hex_extractor.h"
 
 using namespace std;
 using namespace zjucad::matrix;

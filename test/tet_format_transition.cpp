@@ -3,7 +3,7 @@
 //#include <../jtflib/mesh/include/io.h>
 #include <zjucad/matrix/matrix.h>
 #include <jtflib/mesh/io.h>
-#include "../src/vtk.h"
+#include "../common/vtk.h"
 
 using namespace std;
 using namespace jtf::mesh;

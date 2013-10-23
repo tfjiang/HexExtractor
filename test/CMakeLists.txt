@@ -8,4 +8,5 @@ add_executable(extract_integer_grid ${source} ${header})
 target_link_libraries(extract_integer_grid
 lapack
 zjucad-ptree
+extractor
 )
